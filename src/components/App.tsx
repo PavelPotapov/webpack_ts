@@ -4,7 +4,7 @@ export const App = () => {
   return (
     <div>
       <button>
-        <span>hello world</span>
+        <span>hello world </span>
       </button>
     </div>
   )
