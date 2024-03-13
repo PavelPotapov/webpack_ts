@@ -4,6 +4,16 @@ import { type IBuildOptions } from './types/types'
 
 export function buildLoaders(options: IBuildOptions): ModuleOptions['rules'] {
   const isDev = options.mode === 'development'
+
+  const cssLoaderWithModules = {
+    loader: 'css-loader',
+    options: {
+      modules: {
+        localIdentName: isDev ? '[path][name]__[local]' : '[hash:base64:8]' //формирование названия файла
+      }
+    }
+  }
+
   const scssLoader = {
     test: /\.s[ac]ss$/i,
 
@@ -12,11 +22,12 @@ export function buildLoaders(options: IBuildOptions): ModuleOptions['rules'] {
       // 'style-loader',
       isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
       // Translates CSS into CommonJS
-      'css-loader',
+      cssLoaderWithModules,
       // Compiles Sass to CSS
       'sass-loader'
     ]
   }
+
   const tsLoader = {
     // ts-loader по умолчанию умеет работать с JSX, поэтому можно не устанавливать Babel-loader для работы с react
     test: /\.tsx?$/,

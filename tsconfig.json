@@ -9,7 +9,8 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true, // если хотим импортировать все по дефолту, то не обязательно будет ставить * as
     "esModuleInterop": true, //с пакетам commonJS можно работать как с обычными
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
   //для ts-node мы переопределяем compiller options
   "ts-node": {
