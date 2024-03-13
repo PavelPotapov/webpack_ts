@@ -7,10 +7,11 @@
 		"jsx": "react",
 		"allowJs": true,
 		"moduleResolution": "node",
-		"allowSyntheticDefaultImports": true,
-		"esModuleInterop": true
-	},
+		"allowSyntheticDefaultImports": true, // если хотим импортировать все по дефолту, то не обязательно будет ставить * as
+		"esModuleInterop": true //с пакетам commonJS можно работать как с обычными
 
+	},
+	//для ts-node мы переопределяем compiller options
 	"ts-node": {
 		"compilerOptions": {
 			"module": "CommonJS"
