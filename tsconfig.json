@@ -4,7 +4,7 @@
 		"noImplicitAny": true,
 		"module": "ESNext",
 		"target": "es5",
-		"jsx": "react",
+		"jsx": "react-jsx", //чтобы не импортировать react каждый раз
 		"allowJs": true,
 		"moduleResolution": "node",
 		"allowSyntheticDefaultImports": true, // если хотим импортировать все по дефолту, то не обязательно будет ставить * as
