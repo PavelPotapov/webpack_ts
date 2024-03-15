@@ -3,8 +3,8 @@ import classes from './App.module.scss'
 import './Test.scss'
 import { Link, Outlet } from 'react-router-dom'
 
-export const App: React.FC = () => {
-  const [count, setCount] = React.useState<number>(0)
+export const App = () => {
+  const [count, setCount] = React.useState(0)
   const handleClick = (): void => {
     setCount(count + 1)
   }
