@@ -2,6 +2,9 @@ import React from 'react'
 import classes from './App.module.scss'
 import './Test.scss'
 import { Link, Outlet } from 'react-router-dom'
+import AvatarPng from '@/assets/brawl.png'
+import AvatarJpg from '@/assets/foxes.jpg'
+import ZipIcon from '@/assets/zip-icon.svg'
 
 export const App = () => {
   const [count, setCount] = React.useState(0)
@@ -11,7 +14,13 @@ export const App = () => {
 
   return (
     <div>
+      <div>
+        <img src={AvatarPng} alt="" />
+        <img src={AvatarJpg} alt="" width={350} height={250} />
+        <ZipIcon width={50} height={50} color="red" />
+      </div>
       <Link to={'/about'}>About</Link>
+      <br />
       <Link to={'/shop'}>Shop</Link>
       <button className="test" onClick={handleClick}>
         Test
