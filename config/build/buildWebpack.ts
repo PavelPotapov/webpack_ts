@@ -14,7 +14,8 @@ export function buildWebpack(options: IBuildOptions): webpack.Configuration {
     output: {
       path: paths.output,
       filename: '[name].[contenthash].js',
-      clean: true // Clean the output directory before emit.
+      clean: true, // Clean the output directory before emit.
+      chunkFilename: 'lazy/[name].[chunkhash].js'
     },
     plugins: buildPlugins(options),
     module: {
