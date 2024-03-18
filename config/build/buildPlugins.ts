@@ -4,6 +4,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin' // плагин, котор�
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import ESLintPlugin from 'eslint-webpack-plugin'
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 
 export function buildPlugins({
   mode,
@@ -21,11 +22,13 @@ export function buildPlugins({
       __PLATFORM__: JSON.stringify(platform),
       __MODE__: JSON.stringify(mode)
     }),
+
     new ESLintPlugin()
   ]
 
   if (isDev) {
     plugins.push(new webpack.ProgressPlugin())
+    plugins.push(new ForkTsCheckerWebpackPlugin()) //параллельный анализ TS, чтобы не тормозил сборку
   }
 
   if (isProd) {
