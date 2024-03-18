@@ -5,12 +5,21 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import ESLintPlugin from 'eslint-webpack-plugin'
 
-export function buildPlugins({ mode, paths, analyzer }: IBuildOptions): Configuration['plugins'] {
+export function buildPlugins({
+  mode,
+  paths,
+  analyzer,
+  platform
+}: IBuildOptions): Configuration['plugins'] {
   const isDev = mode === 'development'
   const isProd = mode === 'production'
   const plugins: Configuration['plugins'] = [
     new HtmlWebpackPlugin({
       template: paths.html
+    }),
+    new webpack.DefinePlugin({
+      __PLATFORM__: JSON.stringify(platform),
+      __MODE__: JSON.stringify(mode)
     }),
     new ESLintPlugin()
   ]

@@ -6,14 +6,24 @@ import AvatarPng from '@/assets/brawl.png'
 import AvatarJpg from '@/assets/foxes.jpg'
 import ZipIcon from '@/assets/zip-icon.svg'
 
+function TODO(a: number) {
+  console.log('TODO FUNCTION')
+}
+
 export const App = () => {
   const [count, setCount] = React.useState(0)
   const handleClick = (): void => {
     setCount(count + 1)
   }
+  TODO(12)
+  if (__MODE__ === 'development') {
+    console.log('DEVELOPMENT MODE ACTIVE')
+    TODO(12)
+  }
 
   return (
     <div>
+      <h1>PLATFORM={__PLATFORM__}</h1>
       <div>
         <img src={AvatarPng} alt="" />
         <img src={AvatarJpg} alt="" width={350} height={250} />
