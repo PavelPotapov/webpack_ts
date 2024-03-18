@@ -2,6 +2,7 @@ import { type ModuleOptions } from 'webpack'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import { type IBuildOptions } from './types/types'
 import loader from 'mini-css-extract-plugin/types/loader'
+import  ReactRefreshTypeScript  from 'react-refresh-typescript'
 
 export function buildLoaders(options: IBuildOptions): ModuleOptions['rules'] {
   const isDev = options.mode === 'development'
@@ -65,7 +66,13 @@ export function buildLoaders(options: IBuildOptions): ModuleOptions['rules'] {
       {
         loader: 'ts-loader',
         options: {
-          transpileOnly: true //Читай доку https://www.npmjs.com/package/ts-loader#:~:text=..%0A%7D-,Options,-There%20are%20two
+          transpileOnly: true, //Читай доку https://www.npmjs.com/package/ts-loader#:~:text=..%0A%7D-,Options,-There%20are%20two
+          /**
+           * Для HMR
+           */
+          getCustomTransformers: () => ({
+                before: [isDev && ReactRefreshTypeScript()].filter(Boolean),
+              }),
         }
       }
     ],

@@ -5,6 +5,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import ESLintPlugin from 'eslint-webpack-plugin'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
+import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin"
 
 export function buildPlugins({
   mode,
@@ -29,6 +30,8 @@ export function buildPlugins({
   if (isDev) {
     plugins.push(new webpack.ProgressPlugin())
     plugins.push(new ForkTsCheckerWebpackPlugin()) //параллельный анализ TS, чтобы не тормозил сборку
+    plugins.push(new ReactRefreshWebpackPlugin())
+    
   }
 
   if (isProd) {
